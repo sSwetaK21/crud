@@ -1,0 +1,99 @@
+<section>
+  <form [formGroup]="myForm" (ngSubmit)="OnSubmit(myForm)">
+    <h2 mat-dialog-title>Employee Data</h2>
+    <mat-dialog-content>
+      <div class="row">
+        <mat-form-field appearance="fill" color="accent">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="Enter Your First Name"
+            formControlName="firstname"
+          />
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error
+            *ngIf="
+              myForm.get('firstname')?.invalid &&
+              myForm.get('firstname')?.touched
+            "
+          >
+            First Name is <strong>required</strong></mat-error
+          >
+        </mat-form-field>
+        <mat-form-field appearance="fill" color="accent">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            placeholder="Enter Your Last Name"
+            formControlName="lastname"
+          />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill" color="accent">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="Ex. pat@example.com"
+          />
+          <mat-error
+            *ngIf="
+              myForm.get('email')?.hasError('email') &&
+              !myForm.get('email')?.hasError('required')
+            "
+          >
+            Please enter a valid Email Address
+          </mat-error>
+          <mat-error *ngIf="myForm.get('email')?.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field color="accent">
+          <mat-label>Data of Birth</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="date" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName="radio">
+          <mat-label><b>Gender</b></mat-label>
+          <mat-radio-button value="male">Male</mat-radio-button>
+          <mat-radio-button value="female">Female</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field>
+          <mat-label>Education</mat-label>
+          <mat-select formControlName="select">
+            <mat-option *ngFor="let edu of education" [value]="edu">
+              {{ edu }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions style="padding: 10px 20px">
+      <button
+        mat-raised-button
+        color="warn"
+        style="width: 40%"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+      <button mat-raised-button color="accent" style="width: 40%" type="submit">
+        Save
+      </button>
+    </mat-dialog-actions>
+  </form>
+</section>

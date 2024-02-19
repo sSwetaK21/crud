@@ -1,0 +1,9 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.table_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
