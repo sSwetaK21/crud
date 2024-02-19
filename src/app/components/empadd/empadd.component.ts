@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {FormControl,FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 
@@ -20,7 +20,10 @@ export class EmpaddComponent implements OnInit {
   ]
 
   myForm !: FormGroup;
-  constructor(private fb:  FormBuilder, private dialogRef:MatDialogRef<EmpaddComponent>, private emp:EmployeeService){ }
+  constructor(private fb:  FormBuilder, 
+    private dialogRef:MatDialogRef<EmpaddComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any,
+     private emp:EmployeeService){ }
 
 
   ngOnInit(): void {
@@ -33,23 +36,39 @@ export class EmpaddComponent implements OnInit {
       select:''
      
     })
+
+    this.myForm.patchValue(this.data)
     
   }
 
   OnSubmit(form :FormGroup){
     if(this.myForm.valid){
-      console.log(this.myForm.value)
-      this.emp.addEmpData(this.myForm.value).subscribe({
-        next: (val:any)=>{
-          alert("employee sucessfull");
+      if(this.data){
+        this.emp.updateEmp(this.data.id, this.myForm.value).subscribe({
+          next: (val:any)=>{
+            // alert("Employee Updated");
+            this.dialogRef.close(true)
+  
+  
+          },
+          error:(err:any)=>{
+            console.error(err)
+          }
+        })
+      }else{
+        this.emp.addEmpData(this.myForm.value).subscribe({
+          next: (val:any)=>{
+            this.dialogRef.close(true)
+  
+  
+          },
+          error:(err:any)=>{
+            console.error(err)
+          }
+        })
+      }
+    
 
-        },
-        error:(err:any)=>{
-          console.error(err)
-        }
-      })
-
-      this.dialogRef.close()
     }
   }
 

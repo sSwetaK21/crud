@@ -1,67 +1,22 @@
 {
-  "posts": [
-    {
-      "id": "1",
-      "title": "a title",
-      "views": 100
-    },
-    {
-      "id": "2",
-      "title": "another title",
-      "views": 200
-    }
-  ],
-  "comments": [
-    {
-      "id": "1",
-      "text": "a comment about post 1",
-      "postId": "1"
-    },
-    {
-      "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "employee": [
     {
-      "id": "1",
+      "id": 1,
       "firstname": "shweta",
-      "lastname": "",
-      "email": "shweta@gmail.com",
+      "lastname": "kodam",
+      "email": "sk@gmail.cm",
       "date": "",
       "radio": "",
       "select": ""
     },
     {
-      "id": "2",
-      "firstname": "shweta",
-      "lastname": "hjh",
-      "email": "shweta@gmail.com",
-      "date": "",
-      "radio": "",
-      "select": ""
-    },
-    {
-      "id": "3",
-      "firstname": "shweta",
-      "lastname": "kodam",
-      "email": "shweta@gmail.com",
-      "date": "2024-02-15T18:30:00.000Z",
-      "radio": "female",
-      "select": "Graduate"
-    },
-    {
-      "id": "cebf",
-      "firstname": "Shweta",
-      "lastname": "kodam",
-      "email": "sk@gmail.com",
-      "date": "2000-07-20T18:30:00.000Z",
-      "radio": "female",
-      "select": "Graduate"
+      "firstname": "Pawan",
+      "lastname": "Kumar",
+      "email": "pk@gmail.com",
+      "date": "2016-02-01T18:30:00.000Z",
+      "radio": "male",
+      "select": "Post-Graduate",
+      "id": "5558"
     }
   ]
 }

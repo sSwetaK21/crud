@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule} from '@angular/material/sort';
 import { MatTableModule} from '@angular/material/table';
+import { ConfirmDelComponent } from './components/confirm-del/confirm-del.component';
 
 
 
@@ -26,6 +27,7 @@ import { MatTableModule} from '@angular/material/table';
   declarations: [
     AppComponent,
     EmpaddComponent,
+    ConfirmDelComponent,
   ],
   imports: [
     BrowserModule,
